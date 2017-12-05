@@ -50,6 +50,7 @@ Run `gulp build` in the command line to create a `dist` folder of compiled code.
             | - main.js
             | - main.min.js
         | - /css
+        | - /scss
         | - /img
         | - /fonts
         | - /icons
