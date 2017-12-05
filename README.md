@@ -1,8 +1,8 @@
-# Start Baseplate
+# Starter Baseplate
 
 ## Description
 
-Build scripts, package.json and SASS baseplate to start prototyping and building projects quickly.
+Build scripts, package.json and SASS baseplate to start prototyping and building projects quickly. Useful for most basic static sites. Tweak and add/remove modules to suit your project.
 
 ## Usage
 
