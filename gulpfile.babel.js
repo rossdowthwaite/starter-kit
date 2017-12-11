@@ -30,7 +30,8 @@ import uglify       from 'gulp-uglify' ;            // https://www.npmjs.com/pac
 import minifyCss    from 'gulp-minify-css' ;        // https://www.npmjs.com/package/gulp-minify-css
 import minifyHTML   from 'gulp-minify-html';        // https://www.npmjs.com/package/gulp-minify-html
 import rename       from 'gulp-rename';             // https://www.npmjs.com/package/gulp-rename
-
+import babel        from 'gulp-babel';
+import minify       from 'gulp-babel-minify';
 
 /* ==============================================
  * 					Browserify
@@ -129,7 +130,11 @@ gulp.task( 'js:minify', ['js:modules'], () => {
 
   return gulp.src( destPaths.js + '/' + compiled.js )
     .pipe( rename( compiled.js_min ))
-    .pipe( uglify() )
+    .pipe(minify({
+      mangle: {
+        keepClassName: true
+      }
+     }))
     .pipe( gulp.dest( destPaths.js ) )
 });
 
@@ -194,13 +199,13 @@ gulp.task( 'css:build', () => {
 //     LOCAL SERVER
 // ------------------------------------------------------------ */
 
-gulp.task( 'serve', [ 'scss', 'js', 'vendor-js' ], () => {
+gulp.task( 'serve', [ 'scss', 'scripts' ], () => {
     browserSync.init( {
         server: {
             baseDir: servePath
         }
     } );
-    gulp.watch( sourcePaths.js, [ 'js' ] );
+    gulp.watch( sourcePaths.js, [ 'scripts' ] );
     gulp.watch( sourcePaths.scss, [ 'scss' ] );
     gulp.watch( sourcePaths.icons, [ 'iconfont' ] );
     gulp.watch( sourcePaths.html ).on( 'change', browserSync.reload );

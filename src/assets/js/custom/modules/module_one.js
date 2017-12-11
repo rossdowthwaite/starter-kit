@@ -1,13 +1,8 @@
 // utils.js
-var starter = function () {
+export function starter() {
   console.log('starter');
-};
+}
 
-var pack = function () {
+export function pack() {
   console.log('pack');
 };
-
-module.exports = {
-  starter: starter,
-  pack: pack
-}

@@ -1,13 +1,12 @@
-// utils.js
-var hello = function () {
-  console.log('hello');
-};
+class ModuleTwo {
+  constructor(one, two) {
+    this.one;
+    this.two;
+  }
 
-var world = function () {
-  console.log('world');
-};
-
-module.exports = {
-  hello: hello,
-  world: world
+  sayThings() {
+    console.log(`${this.one}, ${this.two}`);
+  }
 }
+
+export default ModuleTwo
