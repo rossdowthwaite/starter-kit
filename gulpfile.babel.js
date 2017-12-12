@@ -63,8 +63,8 @@ const compiled = {
 
 const sourcePaths = {
   html: './src/*.html',
-  njk_pages: './src/pages/**/*.+(html|njk)',
-  njk_templates: './src/templates',
+  njk_pages: assets + '/nunjucks/pages/**/*.+(html|njk)',
+  njk_templates: assets + '/nunjucks/templates',
   js: assets + '/js/custom/*.js',
   js_modules: assets + '/js/custom/modules/*.js',
   css: assets + '/css',
