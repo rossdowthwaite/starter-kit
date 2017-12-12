@@ -1,7 +1,7 @@
 class ModuleTwo {
   constructor(one, two) {
-    this.one;
-    this.two;
+    this.one = one;
+    this.two = two;
   }
 
   sayThings() {

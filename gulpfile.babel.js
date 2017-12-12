@@ -60,7 +60,7 @@ const compiled = {
 const sourcePaths = {
   html: './src/*.html',
   js: assets + '/js/custom/*.js',
-  js_modules: '/js/custom/modules/*.js',
+  js_modules: assets + '/js/custom/modules/*.js',
   css: assets + '/css',
   scss: [
       assets + '/scss/*.scss',
@@ -114,15 +114,13 @@ gulp.task( 'js:compile', () => {
     .pipe( concat( compiled.js ) )
     .pipe( sourcemaps.write() )
     .pipe( gulp.dest( destPaths.js ) )
-    .pipe( browserSync.stream() );
 } );
 
 
 gulp.task('js:modules', ['js:compile'], () => {
-    var stream = gulp.src( destPaths.js + '/' + compiled.js )
+    return gulp.src( destPaths.js + '/' + compiled.js )
       .pipe( gulpBrowser.browserify( transforms ) )
-      .pipe( gulp.dest( destPaths.js ) );
-    return stream;
+      .pipe( gulp.dest( destPaths.js ) )
 });
 
 
@@ -136,10 +134,11 @@ gulp.task( 'js:minify', ['js:modules'], () => {
       }
      }))
     .pipe( gulp.dest( destPaths.js ) )
+    .pipe( browserSync.stream() );
 });
 
 
-gulp.task( 'js:vendor', () => {
+gulp.task( 'js:vendor', ['js:minify'], () => {
 
     return gulp.src( sourcePaths.node_modules )
     .pipe( concat( compiled.js_vendor ) )
@@ -206,6 +205,7 @@ gulp.task( 'serve', [ 'scss', 'scripts' ], () => {
         }
     } );
     gulp.watch( sourcePaths.js, [ 'scripts' ] );
+    gulp.watch( sourcePaths.js_modules, [ 'scripts' ] );
     gulp.watch( sourcePaths.scss, [ 'scss' ] );
     gulp.watch( sourcePaths.icons, [ 'iconfont' ] );
     gulp.watch( sourcePaths.html ).on( 'change', browserSync.reload );

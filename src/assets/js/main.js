@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _module_one.starter)();
 (0, _module_one.pack)();
 
-var module_two = new _module_two2.default('hello', 'world');
+var module_two = new _module_two2.default('hello', 'you');
 module_two.sayThings();
 
 _module_three2.default.hello();
@@ -108,8 +108,8 @@ var ModuleTwo = function () {
   function ModuleTwo(one, two) {
     _classCallCheck(this, ModuleTwo);
 
-    this.one;
-    this.two;
+    this.one = one;
+    this.two = two;
   }
 
   _createClass(ModuleTwo, [{

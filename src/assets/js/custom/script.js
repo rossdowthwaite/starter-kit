@@ -5,7 +5,7 @@ import ModuleThree from './custom/modules/module_three.js'
 starter();
 pack();
 
-const module_two = new ModuleTwo('hello', 'world');
+const module_two = new ModuleTwo('hello', 'you');
 module_two.sayThings();
 
 ModuleThree.hello();
