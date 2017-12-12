@@ -2,7 +2,7 @@
 
 ## Description
 
-Gulpfile, package.json and SASS baseplate to start prototyping and building projects quickly. Useful for most basic static sites. Tweak and add/remove modules to suit your project.
+Nunjucks, Gulpfile, package.json and SASS baseplate to start prototyping and building projects quickly. Useful for most basic static sites. Tweak and add/remove modules to suit your project.
 
 ## Usage
 
@@ -57,6 +57,9 @@ Run `gulp build` in the command line to create a `dist` folder of compiled code.
         | - /img
         | - /fonts
         | - /icons
+        | - /Nunjucks
+            | - pages           // where pages live
+            | - templates       // where templates live
 | - dist                        // Same structure as above without extras
   | - index.html  
   | - /assets
