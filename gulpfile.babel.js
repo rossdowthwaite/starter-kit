@@ -64,6 +64,7 @@ const compiled = {
 
 const sourcePaths = {
   html: './src/*.html',
+  njk: assets + '/nunjucks/**/**/*.+(html|njk)',
   njk_pages: assets + '/nunjucks/pages/**/*.+(html|njk)',
   njk_templates: assets + '/nunjucks/templates',
   js: assets + '/js/custom/*.js',
@@ -217,6 +218,7 @@ gulp.task( 'serve', [ 'sass', 'scripts' ], () => {
     } );
     gulp.watch( sourcePaths.js, [ 'scripts' ] );
     gulp.watch( sourcePaths.js_modules, [ 'scripts' ] );
+    gulp.watch( sourcePaths.njk, [ 'nunjucks' ] );
     gulp.watch( sourcePaths.scss, [ 'sass' ] );
     gulp.watch( sourcePaths.icons, [ 'iconfont' ] );
     gulp.watch( sourcePaths.html ).on( 'change', browserSync.reload );
