@@ -2,7 +2,7 @@
 
 ## Description
 
-Build scripts, package.json and SASS baseplate to start prototyping and building projects quickly. Useful for most basic static sites. Tweak and add/remove modules to suit your project.
+Gulpfile, package.json and SASS baseplate to start prototyping and building projects quickly. Useful for most basic static sites. Tweak and add/remove modules to suit your project.
 
 ## Usage
 
@@ -41,7 +41,6 @@ Run `gulp build` in the command line to create a `dist` folder of compiled code.
 
 ### File Structure
 ```
-/starter
 | - /src
     | - index.html  
     | - /assets
@@ -53,7 +52,7 @@ Run `gulp build` in the command line to create a `dist` folder of compiled code.
             | - main.min.js     // compiled js
         | - /css
         | - /scss               // Replace with own sass Baseplate
-            | - sassFolder...
+            | - sassFolders...
             | - main.scss       // must have this file to compile to css
         | - /img
         | - /fonts
