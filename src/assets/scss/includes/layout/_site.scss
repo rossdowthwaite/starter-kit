@@ -1,0 +1,27 @@
+/*----------------------------------------------------------------------------*\
+    #SITE
+\*----------------------------------------------------------------------------*/
+
+
+/*
+ * Sticky footer
+ */
+
+ html,
+ body,
+ .site-wrapper {
+    height: 100%;
+    position: relative;
+}
+
+    .site-header {
+        z-index: index( $elements, "site-header" );
+    }
+
+    .site-content {
+        z-index: index( $elements, "site-content" );
+    }
+
+    .site-footer {
+        z-index: index( $elements, "site-footer" );
+    }

@@ -141,9 +141,9 @@ gulp.task( 'js:minify', ['js:modules'], () => {
 gulp.task( 'js:vendor', ['js:minify'], () => {
 
     return gulp.src( sourcePaths.node_modules )
-    .pipe( concat( compiled.js_vendor ) )
-    .pipe( gulp.dest( destPaths.js ) )
-    .pipe( browserSync.stream() );
+      .pipe( concat( compiled.js_vendor ) )
+      .pipe( gulp.dest( destPaths.js ) )
+      .pipe( browserSync.stream() );
 } );
 
 

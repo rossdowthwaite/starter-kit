@@ -1,0 +1,31 @@
+/*----------------------------------------------------------------------------*\
+    #LISTS
+\*----------------------------------------------------------------------------*/
+
+
+.list {
+
+    .list__item {
+        list-style: disc;
+        list-style-position: inside;
+    }
+}
+
+
+
+.list--flush {
+    padding: 0;
+
+    .list__item {
+        list-style: none;
+    }
+}
+
+
+
+.list--inline {
+
+    .list__item {
+        display: inline-block;
+    }
+}

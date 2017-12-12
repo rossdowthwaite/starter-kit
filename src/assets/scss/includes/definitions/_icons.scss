@@ -1,0 +1,90 @@
+/*----------------------------------------------------------------------------*\
+    #ICONS
+
+	Required by gulp-iconfont & gulp-iconfont-css.
+
+	If you need to make changes to the output, ensure you edit the .tpl.scss
+	file (src/assets/icons/_icons.tpl.scss)
+\*----------------------------------------------------------------------------*/
+
+@font-face {
+	font-family: "iconfont";
+	src: url('../fonts/iconfont.eot');
+	src: url('../fonts/iconfont.eot?#iefix') format('eot'),
+		url('../fonts/iconfont.woff2') format('woff2'),
+		url('../fonts/iconfont.woff') format('woff'),
+		url('../fonts/iconfont.ttf') format('truetype'),
+		url('../fonts/iconfont.svg#iconfont') format('svg');
+}
+
+[class^="icon-"]:after,
+[class*=" icon-"]:after {
+    @include font-size( $base-font-size, 1.4 );
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    text-transform: none;
+    font-family: 'iconfont';
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate( 0, -2px );
+}
+
+
+@function icon-char($filename) {
+	$char: "";
+
+	@if $filename == compass {
+		$char: "\E001";
+	}
+	@if $filename == fire {
+		$char: "\E002";
+	}
+	@if $filename == lifebuoy {
+		$char: "\E003";
+	}
+	@if $filename == power {
+		$char: "\E004";
+	}
+	@if $filename == quotes-right {
+		$char: "\E005";
+	}
+
+	@return $char;
+}
+
+@mixin icon( $filename, $insert: after, $extend: true ) {
+	&:#{ $insert } {
+		content: icon-char($filename);
+	}
+}
+
+
+	.icon-compass,
+	%icon-compass {
+		@include icon(compass);
+	}
+
+	.icon-fire,
+	%icon-fire {
+		@include icon(fire);
+	}
+
+	.icon-lifebuoy,
+	%icon-lifebuoy {
+		@include icon(lifebuoy);
+	}
+
+	.icon-power,
+	%icon-power {
+		@include icon(power);
+	}
+
+	.icon-quotes-right,
+	%icon-quotes-right {
+		@include icon(quotes-right);
+	}
