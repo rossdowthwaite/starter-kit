@@ -45,7 +45,8 @@ let gulpBrowser = require("gulp-browser");
 /* ==============================================
  * 					Templating
  */
-import nunjucksRender from "gulp-nunjucks-render"
+import nunjucksRender from "gulp-nunjucks-render";
+import htmlbeautify from 'gulp-html-beautify';
 
 const servePath = './src';
 const base_path = './src';
@@ -106,6 +107,10 @@ const transforms = [
         options: {presets: ["es2015"]}
     }
 ];
+
+var beautifyOptions = {
+   indentSize: 1
+ };
 
 
 /* ------------------------------------------------------------
@@ -228,6 +233,7 @@ gulp.task('nunjucks', function() {
     .pipe(nunjucksRender({
         path: [sourcePaths.njk_templates]
       }))
+    .pipe(htmlbeautify(beautifyOptions))
     .pipe(gulp.dest(base_path))
 });
 
