@@ -64,7 +64,7 @@ const sourcePaths = {
   css: assets + '/css',
   scss: [
       assets + '/scss/*.scss',
-      assets + '/scss/**/* .scss',
+      assets + '/scss/**/*.scss',
       assets + '/scss/**/**/*.scss'
     ],
   icons: assets + '/icons/**/*',
@@ -159,7 +159,7 @@ gulp.task( 'scripts', [ 'js:compile', 'js:modules', 'js:minify', 'js:vendor' ] )
 //     SASS & CSS
 // ------------------------------------------------------------ */
 
-gulp.task( 'scss', () => {
+gulp.task( 'scss:compile', () => {
 
     return gulp.src( sourcePaths.scss )
       .pipe( sourcemaps.init() )
@@ -173,7 +173,7 @@ gulp.task( 'scss', () => {
       .pipe( browserSync.stream() );
 } );
 
-gulp.task( 'scss:compressed', () => {
+gulp.task( 'scss:compressed', ['scss:compile'], () => {
 
     return gulp.src( sourcePaths.scss )
       .pipe( sass( {
@@ -193,12 +193,13 @@ gulp.task( 'css:build', () => {
       .pipe( gulp.dest( buildPaths.css ) )
 } );
 
+gulp.task( 'sass', [ 'scss:compile', 'scss:compressed' ] );
 
 /* ------------------------------------------------------------
 //     LOCAL SERVER
 // ------------------------------------------------------------ */
 
-gulp.task( 'serve', [ 'scss', 'scripts' ], () => {
+gulp.task( 'serve', [ 'sass', 'scripts' ], () => {
     browserSync.init( {
         server: {
             baseDir: servePath
@@ -206,7 +207,7 @@ gulp.task( 'serve', [ 'scss', 'scripts' ], () => {
     } );
     gulp.watch( sourcePaths.js, [ 'scripts' ] );
     gulp.watch( sourcePaths.js_modules, [ 'scripts' ] );
-    gulp.watch( sourcePaths.scss, [ 'scss' ] );
+    gulp.watch( sourcePaths.scss, [ 'sass' ] );
     gulp.watch( sourcePaths.icons, [ 'iconfont' ] );
     gulp.watch( sourcePaths.html ).on( 'change', browserSync.reload );
 } );
