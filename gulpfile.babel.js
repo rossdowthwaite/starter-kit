@@ -40,15 +40,19 @@ import browserify from "browserify";                   // https://www.npmjs.com/
 import source from "vinyl-source-stream";              // https://www.npmjs.com/package/vinyl-source-stream
 import buffer from "vinyl-buffer";                     // https://www.npmjs.com/package/vinyl-buffer
 import fs from "fs";
-
 let gulpBrowser = require("gulp-browser");
+
+/* ==============================================
+ * 					Templating
+ */
+import nunjucksRender from "gulp-nunjucks-render"
 
 const servePath = './src';
 const base_path = './src';
 const dist = './dist';
 const assets = base_path + '/assets';
 
-const node_path = './node_modules/';
+const node_path = './node_modules';
 
 const compiled = {
   js: 'main.js',
@@ -59,6 +63,8 @@ const compiled = {
 
 const sourcePaths = {
   html: './src/*.html',
+  njk_pages: './src/pages/**/*.+(html|njk)',
+  njk_templates: './src/templates',
   js: assets + '/js/custom/*.js',
   js_modules: assets + '/js/custom/modules/*.js',
   css: assets + '/css',
@@ -72,8 +78,7 @@ const sourcePaths = {
   img: assets + '/img/*',
   svg: assets + '/icons/*.svg',
   node_modules: [
-    node_path + 'put/path/here',
-    node_path + 'put/another/path/here'
+    node_path + '/nunjucks/browser/nunjucks.min.js',
   ]
 }
 
@@ -212,6 +217,19 @@ gulp.task( 'serve', [ 'sass', 'scripts' ], () => {
     gulp.watch( sourcePaths.html ).on( 'change', browserSync.reload );
 } );
 
+
+/* ------------------------------------------------------------
+//     Templating
+// ------------------------------------------------------------ */
+
+gulp.task('nunjucks', function() {
+
+  return gulp.src(sourcePaths.njk_pages)
+    .pipe(nunjucksRender({
+        path: [sourcePaths.njk_templates]
+      }))
+    .pipe(gulp.dest(base_path))
+});
 
 
 /* ------------------------------------------------------------
