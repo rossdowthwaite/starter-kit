@@ -19,6 +19,8 @@ run `gulp serve` to spin up local web server that watches for changes in code an
 - Concatenates Vendor files
 - Browserifies required custom modules
 - Minifies js
+- Browserify transpiling
+- Babel polyfilling
 
 ##### CSS
 - Compiles SASS into CSS
@@ -45,16 +47,18 @@ Run `gulp build` in the command line to create a `dist` folder of compiled code.
     | - /assets
         | - js
             | - /custom
-                | - /modules
-                | - script.js
-            | - main.js
-            | - main.min.js
+                | - /modules    // create custom modules here
+                | - script.js   // Update this as main script. Add more files if needed
+            | - main.js         // compiled js
+            | - main.min.js     // compiled js
         | - /css
-        | - /scss
+        | - /scss               // Replace with own sass Baseplate
+            | - sassFolder...
+            | - main.scss       // must have this file to compile to css
         | - /img
         | - /fonts
         | - /icons
-| - dist
+| - dist                        // Same structure as above without extras
   | - index.html  
   | - /assets
       | - /js
